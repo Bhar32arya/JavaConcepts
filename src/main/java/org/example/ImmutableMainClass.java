@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 final class Immutable {
     private final int rollNumber;
     private final String name;
@@ -15,16 +14,14 @@ final class Immutable {
         this.name = name;
         this.address = new ArrayList<>(addressList);
     }
-
     public  final int getRollNumber() {
-        return this.rollNumber;
+        return rollNumber;
     }
     public final String getName() {
-        return this.name;
+        return name;
     }
-
     public final List<String> getAddress() {
-        return Collections.unmodifiableList(this.address);
+        return Collections.unmodifiableList(address);
     }
 }
 public class ImmutableMainClass {
