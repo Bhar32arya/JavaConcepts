@@ -1,9 +1,6 @@
 package org.example;
 
-import java.io.BufferedReader;
-import java.io.Closeable;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 /*
  * Set references to objects to null when they are no longer needed.
@@ -28,9 +25,15 @@ class MyNormalResource implements AutoCloseable {
 }
 
 class MyIOResource extends IOException implements Closeable {
+    private final PrintWriter writer;
 
+    public MyIOResource(String fileName) throws IOException {
+        this.writer = new PrintWriter(new FileWriter(fileName));
+        System.out.println("Resource opened: " + fileName);
+    }
     @Override
     public void close() throws IOException {
+        writer.close();
         System.out.println("MyResource is closed");
         // Other cleanup code
     }
